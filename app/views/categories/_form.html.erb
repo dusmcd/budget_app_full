@@ -1,0 +1,19 @@
+    <%= form_for :category, url: path, method: verb do |f| %>
+        <div class="form-size">
+            <div class="form-group">
+                <%= f.label :name %><br>
+                <%= f.text_field :name, class: "form-control" %>
+            </div>
+            
+            <div class="form-group">
+                <%= f.label :type_of %><br>
+                <%= f.select(:category_type_id, options_for_select(type_of_array), {}, {class: "form-control"}) %>
+            </div>
+            
+            <p>
+                <%= f.submit class: "btn btn-lg btn-primary btn-block" %>
+            </p>
+        
+    <% end %>
+        </div>
+</div>

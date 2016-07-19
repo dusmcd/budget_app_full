@@ -1,0 +1,71 @@
+
+
+<div class="container">
+	<h1 id="main-page-heading">My Budget</h1>
+	<h2>Income</h2>
+	<% @categories.each do |category| %>
+	    <% if category.category_type_id == 2 %>
+    		<div class="row spacing">
+    			<div class="col-lg-6">
+    				<label><%= category.name %></label>
+    				<%= link_to "Edit", edit_category_path(category) %>
+    				<%= link_to "Delete", category_path(category), 
+    					method: :delete, data: {confirm: 'Are you sure?'} %>
+    			</div>
+    			<div class="col-lg-6">
+    				<input type="number" class="income-input">
+    			</div>
+    		</div>
+    	<% end %>
+	<% end %>
+	
+	<div class="row">
+		<div class="col-lg-6">
+			<h3>Total Income:</h3>
+		</div>
+		<div class="col-lg-6 align">
+			<span id="total-inc"></span>
+		</div>
+	</div>
+
+	<hr>
+
+	<h2>Expenses</h2>
+	
+	<% @categories.each do |category| %>
+	    <% if category.category_type_id == 1 %>
+        	<div class="row spacing">
+        		<div class="col-lg-6">
+        			<label><%= category.name %></label>
+        			<%= link_to "Edit", edit_category_path(category) %>
+        			<%= link_to "Delete", category_path(category), 
+        				method: :delete, data: {confirm: "Are you sure?"} %>
+        		</div>
+        		<div class="col-lg-6">
+        			<input type="number" class="expense-input">
+        		</div>
+        	</div>
+        <% end %>
+    <% end %>
+
+	<div class="row">
+		<div class="col-lg-6">
+			<h3>Total Expenses:</h3>
+		</div>
+		<div class="col-lg-6 align">
+			<span id="total-exp"></span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<h2>Net Cash:</h2>
+		</div>
+		<div class="col-lg-6 align-total">
+			<span id="net-cash"></span>
+		</div>
+	</div>
+
+
+	<%= link_to "Add Category", new_category_path, :class => "btn btn-md btn-info" %>
+
+</div>
